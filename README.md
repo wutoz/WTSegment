@@ -6,8 +6,8 @@ UITableView风格的自定义SegmentView
 
 ## 安装
 
-### 源文件方式
-拷贝 `WTSegment/`目录下 WTSegment.h / WTSegment.h 和 WTSegmentItem.h / WTSegmentItem.h
+### 源文件
+拷贝 `WTSegment/`目录下 WTSegment.h / WTSegment.h 和 WTSegmentProtocol.h
 
 ### CocoaPods
 
@@ -28,7 +28,7 @@ UITableView风格的自定义SegmentView
     return self.data.count;
 }
 
-- (WTSegmentItem *)WTSegment:(WTSegment *)segment itemAtRow:(NSInteger)row{
+- (UIView<WTSegmentProtocol> *)WTSegment:(WTSegment *)segment itemAtRow:(NSInteger)row{
     WTSegmentItem *item = [[WTSegmentItem alloc]init];
     item.titleLabel.text = self.data[row];
     item.titleLabel.font = [UIFont systemFontOfSize:15];
