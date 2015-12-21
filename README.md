@@ -52,3 +52,6 @@ UITableView风格的自定义SegmentView
 ```
 ## 支持系统
 - iOS 7+
+
+## TODO
+控件滑动
