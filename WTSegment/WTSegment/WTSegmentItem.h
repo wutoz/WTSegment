@@ -13,11 +13,10 @@
 - (instancetype)init;
 
 @property (nonatomic, assign) BOOL selected;
+@property (nonatomic, assign) CGFloat progress;
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIColor *normalColor;
 @property (nonatomic, strong) UIColor *selectedColor;
-
-- (UIColor *)colorOfPoint:(CGPoint)point;
 
 @end

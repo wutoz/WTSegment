@@ -36,6 +36,11 @@
     }
 }
 
+- (void)setProgress:(CGFloat)progress{
+    _progress = progress;
+    _titleLabel.textColor = [self colorOfPoint:CGPointMake(progress * self.frame.size.width, 0)];
+}
+
 - (CAGradientLayer *)gradientLayer{
     if(!_gradientLayer){
         _gradientLayer = [[CAGradientLayer alloc] init];

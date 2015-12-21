@@ -94,9 +94,9 @@
     
     if(item){
         if(fabs(itemOffset) <= self.frame.size.width / count){
-            item.titleLabel.textColor = [item colorOfPoint:CGPointMake(fabs(itemOffset) / self.frame.size.width * item.frame.size.width, 0)];
+            item.progress = fabs(itemOffset) / self.frame.size.width;
         }else{
-            item.titleLabel.textColor = item.normalColor;
+            item.progress = 0;
         }
     }
 }
