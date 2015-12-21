@@ -16,6 +16,7 @@
 @end
 
 @implementation WTSegmentItem
+@synthesize selected,progress;
 
 - (instancetype)init{
     if(self = [super init]){
@@ -27,17 +28,17 @@
     return self;
 }
 
-- (void)setSelected:(BOOL)selected{
-    _selected = selected;
-    if(_selected){
+- (void)setSelected:(BOOL)aSelected{
+    selected = aSelected;
+    if(selected){
         _titleLabel.textColor = _selectedColor;
     }else{
         _titleLabel.textColor = _normalColor;
     }
 }
 
-- (void)setProgress:(CGFloat)progress{
-    _progress = progress;
+- (void)setProgress:(CGFloat)aProgress{
+    progress = aProgress;
     _titleLabel.textColor = [self colorOfPoint:CGPointMake(progress * self.frame.size.width, 0)];
 }
 

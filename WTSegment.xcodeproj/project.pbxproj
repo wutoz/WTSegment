@@ -14,10 +14,10 @@
 		47CAED421C2796AA00816691 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47CAED401C2796AA00816691 /* LaunchScreen.storyboard */; };
 		47CAED4F1C27979E00816691 /* WTSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED4E1C27979E00816691 /* WTSegment.m */; };
 		47CAED521C27987000816691 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED511C27987000816691 /* ItemView.m */; };
-		47CAED551C27A4FC00816691 /* WTSegmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED541C27A4FC00816691 /* WTSegmentItem.m */; };
 		47CAED5B1C27D8A500816691 /* UIColor+Addtions.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED5A1C27D8A500816691 /* UIColor+Addtions.m */; };
 		47CAED5D1C27DFA000816691 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CAED5C1C27DFA000816691 /* QuartzCore.framework */; };
 		47CAED5F1C27FD6E00816691 /* WTSegment.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 47CAED5E1C27FD6E00816691 /* WTSegment.podspec */; };
+		47CAED691C282B3700816691 /* WTSegmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED681C282B3700816691 /* WTSegmentItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,12 +34,13 @@
 		47CAED4E1C27979E00816691 /* WTSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSegment.m; sourceTree = "<group>"; };
 		47CAED501C27987000816691 /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
 		47CAED511C27987000816691 /* ItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
-		47CAED531C27A4FC00816691 /* WTSegmentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSegmentItem.h; sourceTree = "<group>"; };
-		47CAED541C27A4FC00816691 /* WTSegmentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSegmentItem.m; sourceTree = "<group>"; };
 		47CAED591C27D8A500816691 /* UIColor+Addtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addtions.h"; sourceTree = "<group>"; };
 		47CAED5A1C27D8A500816691 /* UIColor+Addtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addtions.m"; sourceTree = "<group>"; };
 		47CAED5C1C27DFA000816691 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		47CAED5E1C27FD6E00816691 /* WTSegment.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WTSegment.podspec; sourceTree = "<group>"; };
+		47CAED631C2828B400816691 /* WTSegmentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSegmentProtocol.h; sourceTree = "<group>"; };
+		47CAED671C282B3700816691 /* WTSegmentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSegmentItem.h; sourceTree = "<group>"; };
+		47CAED681C282B3700816691 /* WTSegmentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSegmentItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +81,8 @@
 				47CAED361C2796AA00816691 /* AppDelegate.m */,
 				47CAED381C2796AA00816691 /* ViewController.h */,
 				47CAED391C2796AA00816691 /* ViewController.m */,
+				47CAED671C282B3700816691 /* WTSegmentItem.h */,
+				47CAED681C282B3700816691 /* WTSegmentItem.m */,
 				47CAED591C27D8A500816691 /* UIColor+Addtions.h */,
 				47CAED5A1C27D8A500816691 /* UIColor+Addtions.m */,
 				47CAED501C27987000816691 /* ItemView.h */,
@@ -105,8 +108,7 @@
 			children = (
 				47CAED4D1C27979E00816691 /* WTSegment.h */,
 				47CAED4E1C27979E00816691 /* WTSegment.m */,
-				47CAED531C27A4FC00816691 /* WTSegmentItem.h */,
-				47CAED541C27A4FC00816691 /* WTSegmentItem.m */,
+				47CAED631C2828B400816691 /* WTSegmentProtocol.h */,
 			);
 			path = WTSegment;
 			sourceTree = "<group>";
@@ -182,12 +184,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				47CAED521C27987000816691 /* ItemView.m in Sources */,
-				47CAED551C27A4FC00816691 /* WTSegmentItem.m in Sources */,
 				47CAED4F1C27979E00816691 /* WTSegment.m in Sources */,
 				47CAED5B1C27D8A500816691 /* UIColor+Addtions.m in Sources */,
 				47CAED3A1C2796AA00816691 /* ViewController.m in Sources */,
 				47CAED371C2796AA00816691 /* AppDelegate.m in Sources */,
 				47CAED341C2796AA00816691 /* main.m in Sources */,
+				47CAED691C282B3700816691 /* WTSegmentItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

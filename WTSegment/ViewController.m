@@ -10,6 +10,7 @@
 #import "WTSegment.h"
 #import "ItemView.h"
 #import "UIColor+Addtions.h"
+#import "WTSegmentItem.h"
 
 #define ScreenH     ([[UIScreen mainScreen]bounds].size.height)
 #define ScreenW     ([[UIScreen mainScreen]bounds].size.width)

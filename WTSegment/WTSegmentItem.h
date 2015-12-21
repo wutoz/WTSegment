@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WTSegmentProtocol.h"
 
-@interface WTSegmentItem : UIView
+@interface WTSegmentItem : UIView<WTSegmentProtocol>
 
 - (instancetype)init;
-
-@property (nonatomic, assign) BOOL selected;
-@property (nonatomic, assign) CGFloat progress;
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIColor *normalColor;

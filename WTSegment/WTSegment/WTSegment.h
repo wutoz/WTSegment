@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WTSegmentItem.h"
+#import "WTSegmentProtocol.h"
 /*!
  *  控件风格
  */
@@ -75,7 +75,7 @@ typedef NS_ENUM(NSInteger,WTSegmentStyle) {
  *
  *  @return 返回Item
  */
-- (WTSegmentItem *)itemAtRow:(NSInteger)row;
+- (UIView<WTSegmentProtocol> *)itemAtRow:(NSInteger)row;
 /*!
  *  移动到指定位置
  *
@@ -115,7 +115,7 @@ typedef NS_ENUM(NSInteger,WTSegmentStyle) {
  *
  *  @return 自定义Item
  */
-- (WTSegmentItem *)WTSegment:(WTSegment *)segment itemAtRow:(NSInteger)row;
+- (UIView<WTSegmentProtocol> *)WTSegment:(WTSegment *)segment itemAtRow:(NSInteger)row;
 
 @end
 

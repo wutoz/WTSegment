@@ -14,8 +14,8 @@
 @interface WTSegment ()
 
 @property (nonatomic, strong) UIView *cursorView;
-@property (nonatomic, strong) WTSegmentItem *crtItem;
-@property (nonatomic, strong) WTSegmentItem *selItem;
+@property (nonatomic, strong) UIView<WTSegmentProtocol> *crtItem;
+@property (nonatomic, strong) UIView<WTSegmentProtocol> *selItem;
 
 @end
 
@@ -42,7 +42,7 @@
     NSInteger count = [_dataSource numberOfRowsInWTSegment:self];
     
     for(int i = 0; i < count; i++){
-        WTSegmentItem *item = [_dataSource WTSegment:self itemAtRow:i];
+        UIView<WTSegmentProtocol> *item = [_dataSource WTSegment:self itemAtRow:i];
         item.tag = TAG + i;
         if(_selectedIndex == i){
             item.selected = YES;
@@ -85,7 +85,7 @@
     CGFloat itemOffset = (offset - _selectedIndex * self.frame.size.width) / count;
     cursorView.frame = CGRectMake(_selectedIndex * self.frame.size.width / count + itemOffset, self.frame.size.height - CURSOR_H, self.frame.size.width / count, CURSOR_H);
 
-    WTSegmentItem *item;
+    UIView<WTSegmentProtocol> *item;
     if(itemOffset > 0.000001){
         item = [self itemAtRow:_selectedIndex + 1];
     }else{
@@ -111,7 +111,7 @@
     [self setUp];
 }
 
-- (WTSegmentItem *)itemAtRow:(NSInteger)row{
+- (UIView<WTSegmentProtocol> *)itemAtRow:(NSInteger)row{
     return [self viewWithTag:row + TAG];
 }
 
@@ -121,7 +121,7 @@
     NSInteger count = [_dataSource numberOfRowsInWTSegment:self];
     
     for(int i = 0; i < count; i++){
-        WTSegmentItem *item = [self itemAtRow:i];
+        UIView<WTSegmentProtocol> *item = [self itemAtRow:i];
         if(CGRectContainsPoint(item.frame, location))
         {
             item.selected = YES;
@@ -136,7 +136,7 @@
     NSInteger count = [_dataSource numberOfRowsInWTSegment:self];
     
     for(int i = 0; i < count; i++){
-        WTSegmentItem *item = [self itemAtRow:i];
+        UIView<WTSegmentProtocol> *item = [self itemAtRow:i];
         if(CGRectContainsPoint(item.frame, location))
         {
             item.selected = YES;
