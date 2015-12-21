@@ -65,7 +65,7 @@
     return self.data.count;
 }
 
-- (WTSegmentItem *)WTSegment:(WTSegment *)segment itemAtRow:(NSInteger)row{
+- (UIView<WTSegmentProtocol> *)WTSegment:(WTSegment *)segment itemAtRow:(NSInteger)row{
     WTSegmentItem *item = [[WTSegmentItem alloc]init];
     item.titleLabel.text = self.data[row];
     item.titleLabel.font = [UIFont systemFontOfSize:15];
