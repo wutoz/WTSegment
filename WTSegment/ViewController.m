@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.data = @[@"沪深",@"板块",@"股指",@"港股",@"全球",@"全部"];
+    self.data = @[@"标题1",@"标题2",@"标题3",@"标题4",@"标题5",@"标题6"];
     
     segment = [[WTSegment alloc]initWithFrame:CGRectMake(0, 20, ScreenW, SegmentH) style:WTSegmentStylePlain];
     segment.backgroundColor = [UIColor colorWithHexColor:@"1b2735"];
