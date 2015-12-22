@@ -58,7 +58,17 @@
     }
     
     
+    UIButton *add = [[UIButton alloc]initWithFrame:CGRectMake(100, 200, 80, 80)];
+    [add setBackgroundColor:[UIColor redColor]];
+    [add addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:add];
+    
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)click:(id)sender{
+    self.data = @[@"标题1",@"标题2",@"标题3",@"标题4"];
+    [segment reloadSegment];
 }
 
 #pragma mark - WTSegmentDataSource

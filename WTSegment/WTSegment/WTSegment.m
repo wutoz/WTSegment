@@ -120,8 +120,12 @@
         [_floorView addSubview:item];
     }
     
-    if(_rows > _itemsMax)
+    if(_rows > _itemsMax){
         _floorView.contentSize = CGSizeMake(FRAME_W + (_rows - _itemsMax) * ITEM_W(_rows), FRAME_H);
+    }else{
+        _floorView.contentSize = CGSizeZero;
+    }
+    
 }
 
 #pragma mark - 滑动事件
