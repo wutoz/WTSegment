@@ -137,56 +137,60 @@
 }
 
 - (void)scrollToOffset:(CGFloat)offset{
-    CGFloat itemOffset = (offset - _selectedIndex * FRAME_W) / (_rows <= _itemsMax ? _rows :_itemsMax);
+    CGFloat itemOffset = offset / (_rows <= _itemsMax ? _rows :_itemsMax);
     [self updateCursorOffset:itemOffset];
+    [self updateItemOffset:itemOffset];
     [self updateScrollViewOffset:itemOffset];
+}
 
+#pragma mark - Utils
+- (void)updateCursorOffset:(CGFloat)offset{
+    _cursorView.backgroundColor = _cursorColor;
+    switch (_cursorStyle) {
+        case WTSegmentCursorStyleBottom:
+            _cursorView.frame = CGRectMake(offset, FRAME_H - CURSOR_H, ITEM_W(_rows), CURSOR_H);
+            break;
+        case WTSegmentCursorStyleMiddle:
+            _cursorView.layer.cornerRadius = 10.0f;
+            _cursorView.frame = CGRectMake(offset, CURSOR_H, ITEM_W(_rows), FRAME_H - CURSOR_H * 2);
+            break;
+        case WTSegmentCursorStyleTop:
+            _cursorView.frame = CGRectMake(offset, 0, ITEM_W(_rows), CURSOR_H);
+            break;
+    }
+}
+
+- (void)updateScrollViewOffset:(CGFloat)offset{
+    if(offset > ITEM_W(_rows) * (_itemsMax - 3) && offset <= ITEM_W(_rows) * (_rows - 3) && _rows > _itemsMax){
+        _floorView.contentOffset =  CGPointMake(ITEM_W(_rows) * (3 - _itemsMax) + offset, _floorView.contentOffset.y);
+    }
+}
+
+- (void)updateItemOffset:(CGFloat)offset{
+    offset = offset - _selectedIndex * ITEM_W(_rows);
+    
     UIView<WTSegmentProtocol> *item;
     
     item = [self itemAtRow:_selectedIndex];
-    if(fabs(itemOffset) <= ITEM_W(_rows)){
-        item.progress = 1 - fabs(itemOffset) / ITEM_W(_rows);
+    
+    if(fabs(offset) <= ITEM_W(_rows)){
+        item.progress = 1 - fabs(offset) / ITEM_W(_rows);
     }else{
         item.progress = 0;
     }
     
-    if(itemOffset > 0.000001){
+    if(offset > 0.000001){
         item = [self itemAtRow:_selectedIndex + 1];
     }else{
         item = [self itemAtRow:_selectedIndex - 1];
     }
     
     if(item){
-        if(fabs(itemOffset) <= ITEM_W(_rows)){
-            item.progress = fabs(itemOffset) / ITEM_W(_rows);
+        if(fabs(offset) <= ITEM_W(_rows)){
+            item.progress = fabs(offset) / ITEM_W(_rows);
         }else{
             item.progress = 0;
         }
-    }
-}
-
-#pragma mark - Utils
-
-- (void)updateCursorOffset:(CGFloat)offset{
-    _cursorView.backgroundColor = _cursorColor;
-    switch (_cursorStyle) {
-        case WTSegmentCursorStyleBottom:
-            _cursorView.frame = CGRectMake(_selectedIndex * ITEM_W(_rows) + offset, FRAME_H - CURSOR_H, ITEM_W(_rows), CURSOR_H);
-            break;
-        case WTSegmentCursorStyleMiddle:
-            _cursorView.layer.cornerRadius = 10.0f;
-            _cursorView.frame = CGRectMake(_selectedIndex * ITEM_W(_rows) + offset, CURSOR_H, ITEM_W(_rows), FRAME_H - CURSOR_H * 2);
-            break;
-        case WTSegmentCursorStyleTop:
-            _cursorView.frame = CGRectMake(_selectedIndex * ITEM_W(_rows) + offset, 0, ITEM_W(_rows), CURSOR_H);
-            break;
-    }
-}
-
-- (void)updateScrollViewOffset:(CGFloat)offset{
-    CGFloat diff = _selectedIndex * ITEM_W(_rows) + offset;
-    if(diff > ITEM_W(_rows) * (_itemsMax - 3) && diff <= ITEM_W(_rows) * (_rows - 3) && _rows > _itemsMax){
-        _floorView.contentOffset =  CGPointMake(ITEM_W(_rows) * (_selectedIndex - (_itemsMax - 3)) + offset, _floorView.contentOffset.y);
     }
 }
 
@@ -247,20 +251,17 @@
 
 @implementation UIScrollView (UITouch)
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [[self nextResponder] touchesBegan:touches withEvent:event];
     [super touchesBegan:touches withEvent:event];
 }
 
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     [[self nextResponder] touchesMoved:touches withEvent:event];
     [super touchesMoved:touches withEvent:event];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     [[self nextResponder] touchesEnded:touches withEvent:event];
     [super touchesEnded:touches withEvent:event];
 }

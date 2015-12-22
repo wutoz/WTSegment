@@ -58,17 +58,22 @@
     }
     
     
-    UIButton *add = [[UIButton alloc]initWithFrame:CGRectMake(100, 200, 80, 80)];
-    [add setBackgroundColor:[UIColor redColor]];
-    [add addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:add];
+    UIButton *funcBtn = [[UIButton alloc]initWithFrame:CGRectMake(20, ScreenH - 80, 50, 50)];
+    [funcBtn setBackgroundColor:[UIColor redColor]];
+    funcBtn.layer.cornerRadius = 25.0f;
+    [funcBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:funcBtn];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)click:(id)sender{
     self.data = @[@"标题1",@"标题2",@"标题3",@"标题4"];
+     [scrollView1 scrollRectToVisible:CGRectMake(0, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
     [segment reloadSegment];
+    
+//    [scrollView1 scrollRectToVisible:CGRectMake(ScreenW * 3, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
+//    [segment scrollToRow:3 animation:YES];
 }
 
 #pragma mark - WTSegmentDataSource
