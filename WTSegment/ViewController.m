@@ -73,6 +73,7 @@
 //    [segment reloadSegment];
     
     [segment scrollToRow:3 animation:YES];
+    [scrollView1 scrollRectToVisible:CGRectMake(ScreenW * 3, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
 }
 
 #pragma mark - WTSegmentDataSource
@@ -106,11 +107,12 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    
+    [segment scrollToRow:scrollView.contentOffset.x / ScreenW animation:YES];
 }
 
 #pragma mark - WTSegmentDelegate
 - (void)WTSegment:(WTSegment *)segment didSelectedAtRow:(NSInteger)row{
+    NSLog(@"%s",__FUNCTION__);
     [scrollView1 scrollRectToVisible:CGRectMake(ScreenW * row, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
 }
 
