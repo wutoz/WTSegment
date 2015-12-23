@@ -134,6 +134,10 @@
     self.crtItem.selected = NO;
     self.crtItem = [self itemAtRow:_selectedIndex];
     self.crtItem.selected = YES;
+    
+    if(_delegate && [_delegate respondsToSelector:@selector(WTSegment:didSelectedAtRow:)]){
+        [_delegate WTSegment:self didSelectedAtRow:_selectedIndex];
+    }
 }
 
 - (void)scrollToOffset:(CGFloat)offset{
@@ -242,9 +246,7 @@
         _selectedIndex = self.crtItem.tag - TAG;
     }
     
-    if(_delegate && [_delegate respondsToSelector:@selector(WTSegment:didSelectedAtRow:)]){
-        [_delegate WTSegment:self didSelectedAtRow:_selectedIndex];
-    }
+    [self scrollToRow:_selectedIndex animation:YES];
 }
 
 @end

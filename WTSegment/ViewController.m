@@ -68,12 +68,11 @@
 }
 
 - (void)click:(id)sender{
-    self.data = @[@"标题1",@"标题2",@"标题3",@"标题4"];
-     [scrollView1 scrollRectToVisible:CGRectMake(0, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
-    [segment reloadSegment];
+//    self.data = @[@"标题1",@"标题2",@"标题3",@"标题4"];
+//     [scrollView1 scrollRectToVisible:CGRectMake(0, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
+//    [segment reloadSegment];
     
-//    [scrollView1 scrollRectToVisible:CGRectMake(ScreenW * 3, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
-//    [segment scrollToRow:3 animation:YES];
+    [segment scrollToRow:3 animation:YES];
 }
 
 #pragma mark - WTSegmentDataSource
@@ -107,7 +106,7 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    [segment scrollToRow:scrollView.contentOffset.x / ScreenW animation:YES];
+    
 }
 
 #pragma mark - WTSegmentDelegate
