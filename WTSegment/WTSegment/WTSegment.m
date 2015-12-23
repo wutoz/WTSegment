@@ -167,31 +167,12 @@
 }
 
 - (void)updateItemOffset:(CGFloat)offset{
-    offset = offset - _selectedIndex * ITEM_W(_rows);
-    
     UIView<WTSegmentProtocol> *item;
+    item = [self itemAtRow:floorf(offset / ITEM_W(_rows))];
+    item.progress = 1 - offset / ITEM_W(_rows) + floorf(offset / ITEM_W(_rows));
     
-    item = [self itemAtRow:_selectedIndex];
-    
-    if(fabs(offset) <= ITEM_W(_rows)){
-        item.progress = 1 - fabs(offset) / ITEM_W(_rows);
-    }else{
-        item.progress = 0;
-    }
-    
-    if(offset > 0.000001){
-        item = [self itemAtRow:_selectedIndex + 1];
-    }else{
-        item = [self itemAtRow:_selectedIndex - 1];
-    }
-    
-    if(item){
-        if(fabs(offset) <= ITEM_W(_rows)){
-            item.progress = fabs(offset) / ITEM_W(_rows);
-        }else{
-            item.progress = 0;
-        }
-    }
+    item = [self itemAtRow:floorf(offset / ITEM_W(_rows)) + 1];
+    item.progress = offset / ITEM_W(_rows) - floorf(offset / ITEM_W(_rows));
 }
 
 #pragma mark - 刷新
