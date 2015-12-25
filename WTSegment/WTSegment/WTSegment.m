@@ -24,7 +24,7 @@
 #import "WTSegment.h"
 
 #define CURSOR_H          3
-#define TAG               [@"Item" hash]
+#define ITEM_MAX          6
 #define FRAME_H           (self.frame.size.height)
 #define FRAME_W           (self.frame.size.width)
 #define ITEM_W(_rows)     (_rows <= _itemsMax ? FRAME_W / _rows : FRAME_W / _itemsMax)
@@ -35,6 +35,7 @@
 @property (nonatomic, strong) UIView *cursorView;
 @property (nonatomic, strong) UIView<WTSegmentProtocol> *crtItem;
 @property (nonatomic, strong) UIView<WTSegmentProtocol> *selItem;
+@property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, assign) NSInteger rows;
 
 @end
@@ -45,19 +46,31 @@
 - (instancetype)initWithFrame:(CGRect)frame style:(WTSegmentStyle)style{
     if(self = [super initWithFrame:frame]){
         _style = style;
-        _itemsMax = 6;
-        
-        _floorView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        _floorView.bounces = NO;
-        _floorView.showsHorizontalScrollIndicator = NO;
-        _floorView.showsVerticalScrollIndicator = NO;
-        [self addSubview:_floorView];
-        
+        _itemsMax = ITEM_MAX;
         _cursorStyle = WTSegmentCursorStyleBottom;
-        _cursorView = [[UIView alloc]initWithFrame:CGRectZero];
-        [_floorView addSubview:_cursorView];
+        _items = [[NSMutableArray alloc]init];
+        
+        [self addSubview:self.floorView];
+        [self.floorView addSubview:self.cursorView];
     }
     return self;
+}
+
+- (UIScrollView *)floorView{
+    if(!_floorView){
+        _floorView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        [_floorView setBounces:NO];
+        [_floorView setShowsHorizontalScrollIndicator:NO];
+        [_floorView setShowsVerticalScrollIndicator:NO];
+    }
+    return _floorView;
+}
+
+- (UIView *)cursorView{
+    if(!_cursorView){
+        _cursorView = [[UIView alloc]initWithFrame:CGRectZero];
+    }
+    return _cursorView;
 }
 
 - (void)layoutSubviews{
@@ -71,59 +84,62 @@
     _rows = [_dataSource numberOfRowsInWTSegment:self];
     
     [self updateCursorOffset:0];
-
-    for(UIView *item in _floorView.subviews){
-        if(item.tag >= TAG){
-            [item removeFromSuperview];
-        }
-    }
     
-    for(int i = 0; i < _rows; i++){
-        switch (_style) {
-            case WTSegmentStyleGroup:
-            {
-                if(i == 0) break;
-                
-                UIView *lineView = [[UIView alloc]init];
-                lineView.frame = CGRectMake(ITEM_W(_rows) * i, (FRAME_H - CURSOR_H) / 3, 1, (FRAME_H - CURSOR_H) / 3);
-                lineView.backgroundColor = _seperateColor;
-                lineView.tag = TAG * 2 + i;
-                [_floorView addSubview:lineView];
-            }
-                break;
-            case WTSegmentStylePlain:
-                break;
-        }
-    }
+    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperview];
+    }];
+    
+    [self.items removeAllObjects];
     
     for(int i = 0; i < _rows; i++){
         UIView<WTSegmentProtocol> *item = [_dataSource WTSegment:self itemAtRow:i];
-        item.tag = TAG + i;
-        if(i == 0){
-            item.selected = YES;
-            self.crtItem = item;
+        [self.items addObject:item];
+    }
+    
+//    for(int i = 0; i < _rows; i++){
+//        switch (_style) {
+//            case WTSegmentStyleGroup:
+//            {
+//                if(i == 0) break;
+//                
+//                UIView *lineView = [[UIView alloc]init];
+//                [lineView setFrame:CGRectMake(ITEM_W(_rows) * i, (FRAME_H - CURSOR_H) / 3, 1, (FRAME_H - CURSOR_H) / 3)];
+//                [lineView setBackgroundColor:_seperateColor];
+//                [lineView setTag:TAG * 2 + i];
+//                [self.floorView addSubview:lineView];
+//            }
+//                break;
+//            case WTSegmentStylePlain:
+//                break;
+//        }
+//    }
+    
+    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(idx == 0){
+            [obj setSelected:YES];
+            self.crtItem = obj;
         }else{
-            item.selected = NO;
+            [obj setSelected:NO];
         }
         switch (_cursorStyle) {
             case WTSegmentCursorStyleBottom:
-                item.frame = CGRectMake(ITEM_W(_rows) * i, 0, ITEM_W(_rows), FRAME_H - CURSOR_H);
+                [obj setFrame:CGRectMake(ITEM_W(_rows) * idx, 0, ITEM_W(_rows), FRAME_H - CURSOR_H)];
                 break;
             case WTSegmentCursorStyleMiddle:
-                item.frame = CGRectMake(ITEM_W(_rows) * i, CURSOR_H, ITEM_W(_rows), FRAME_H - CURSOR_H * 2);
+                [obj setFrame:CGRectMake(ITEM_W(_rows) * idx, CURSOR_H, ITEM_W(_rows), FRAME_H - CURSOR_H * 2)];
                 break;
             case WTSegmentCursorStyleTop:
-                item.frame = CGRectMake(ITEM_W(_rows) * i, CURSOR_H, ITEM_W(_rows), FRAME_H - CURSOR_H);
+                [obj setFrame:CGRectMake(ITEM_W(_rows) * idx, CURSOR_H, ITEM_W(_rows), FRAME_H - CURSOR_H)];
                 break;
         }
         
-        [_floorView addSubview:item];
-    }
+        [self.floorView addSubview:obj];
+    }];
     
     if(_rows > _itemsMax){
-        _floorView.contentSize = CGSizeMake(FRAME_W + (_rows - _itemsMax) * ITEM_W(_rows), FRAME_H);
+        [self.floorView setContentSize:CGSizeMake(FRAME_W + (_rows - _itemsMax) * ITEM_W(_rows), FRAME_H)];
     }else{
-        _floorView.contentSize = CGSizeZero;
+        [self.floorView setContentSize:CGSizeZero];
     }
     
 }
@@ -131,9 +147,9 @@
 #pragma mark - 滑动事件
 - (void)scrollToRow:(NSInteger)row animation:(BOOL)animation{
     _selectedIndex = row;
-    self.crtItem.selected = NO;
+    [self.crtItem setSelected:NO];
     self.crtItem = [self itemAtRow:_selectedIndex];
-    self.crtItem.selected = YES;
+    [self.crtItem setSelected:YES];
 }
 
 - (void)scrollToOffset:(CGFloat)offset{
@@ -145,34 +161,34 @@
 
 #pragma mark - Utils
 - (void)updateCursorOffset:(CGFloat)offset{
-    _cursorView.backgroundColor = _cursorColor;
+    [self.cursorView setBackgroundColor:_cursorColor];
     switch (_cursorStyle) {
         case WTSegmentCursorStyleBottom:
-            _cursorView.frame = CGRectMake(offset, FRAME_H - CURSOR_H, ITEM_W(_rows), CURSOR_H);
+            [self.cursorView setFrame:CGRectMake(offset, FRAME_H - CURSOR_H, ITEM_W(_rows), CURSOR_H)];
             break;
         case WTSegmentCursorStyleMiddle:
-            _cursorView.layer.cornerRadius = 10.0f;
-            _cursorView.frame = CGRectMake(offset, CURSOR_H, ITEM_W(_rows), FRAME_H - CURSOR_H * 2);
+            self.cursorView.layer.cornerRadius = 10.0f;
+            [self.cursorView setFrame:CGRectMake(offset, CURSOR_H, ITEM_W(_rows), FRAME_H - CURSOR_H * 2)];
             break;
         case WTSegmentCursorStyleTop:
-            _cursorView.frame = CGRectMake(offset, 0, ITEM_W(_rows), CURSOR_H);
+            [self.cursorView setFrame:CGRectMake(offset, 0, ITEM_W(_rows), CURSOR_H)];
             break;
     }
 }
 
 - (void)updateScrollViewOffset:(CGFloat)offset{
     if(offset > ITEM_W(_rows) * (_itemsMax - 3) && offset <= ITEM_W(_rows) * (_rows - 3) && _rows > _itemsMax){
-        _floorView.contentOffset =  CGPointMake(ITEM_W(_rows) * (3 - _itemsMax) + offset, _floorView.contentOffset.y);
+        [self.floorView setContentOffset:CGPointMake(ITEM_W(_rows) * (3 - _itemsMax) + offset, self.floorView.contentOffset.y)];
     }
 }
 
 - (void)updateItemOffset:(CGFloat)offset{
     UIView<WTSegmentProtocol> *item;
     item = [self itemAtRow:floorf(offset / ITEM_W(_rows))];
-    item.progress = 1 - offset / ITEM_W(_rows) + floorf(offset / ITEM_W(_rows));
+    [item setProgress:1 - offset / ITEM_W(_rows) + floorf(offset / ITEM_W(_rows))];
     
     item = [self itemAtRow:floorf(offset / ITEM_W(_rows)) + 1];
-    item.progress = offset / ITEM_W(_rows) - floorf(offset / ITEM_W(_rows));
+    [item setProgress:offset / ITEM_W(_rows) - floorf(offset / ITEM_W(_rows))];
 }
 
 #pragma mark - 刷新
@@ -181,46 +197,44 @@
 }
 
 - (UIView<WTSegmentProtocol> *)itemAtRow:(NSInteger)row{
-    return [_floorView viewWithTag:row + TAG];
+    if(row < 0 || row >= _rows) return nil;
+    return [self.items objectAtIndex:row];
 }
 
 #pragma mark - 触摸事件
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    CGPoint location = [[touches anyObject] locationInView:_floorView];
-    
-    for(int i = 0; i < _rows; i++){
-        UIView<WTSegmentProtocol> *item = [self itemAtRow:i];
-        if(CGRectContainsPoint(item.frame, location))
+    CGPoint location = [[touches anyObject] locationInView:self.floorView];
+    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(CGRectContainsPoint(obj.frame, location))
         {
-            item.selected = YES;
-            self.selItem = item;
-            break;
+            [obj setSelected:YES];
+            self.selItem = obj;
+            *stop = YES;
         }
-    }
+    }];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    CGPoint location = [[touches anyObject] locationInView:_floorView];
+    CGPoint location = [[touches anyObject] locationInView:self.floorView];
     
-    for(int i = 0; i < _rows; i++){
-        UIView<WTSegmentProtocol> *item = [self itemAtRow:i];
-        if(CGRectContainsPoint(item.frame, location))
+    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(CGRectContainsPoint(obj.frame, location))
         {
-            item.selected = YES;
-            if(self.selItem != item && self.selItem != self.crtItem){
-                self.selItem.selected = NO;
+            [obj setSelected:YES];
+            if(self.selItem != obj && self.selItem != self.crtItem){
+                [self.selItem setSelected:NO];
             }
-            self.selItem = item;
-            break;
+            self.selItem = obj;
+            *stop = YES;
         }
-    }
+     }];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     if(self.crtItem != self.selItem){
-        self.crtItem.selected = NO;
+        [self.crtItem setSelected:NO];
         self.crtItem = self.selItem;
-        _selectedIndex = self.crtItem.tag - TAG;
+        _selectedIndex = [self.items indexOfObject:self.crtItem];
     }
     
     if(_delegate && [_delegate respondsToSelector:@selector(WTSegment:didSelectedAtRow:)]){
@@ -229,7 +243,7 @@
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
-    self.selItem.selected = NO;
+    [self.selItem setSelected:NO];
 }
 
 @end
