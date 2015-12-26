@@ -38,14 +38,15 @@
 }
 
 - (void)setProgress:(CGFloat)aProgress{
-//    if(aProgress >= 0.98){
-//        progress = 0.98;
-//    }else if (aProgress <= 0.02){
-//        progress = 0.02;
-//    }else{
-//        progress = aProgress;
-//    }
-//    _titleLabel.textColor = [self colorOfPoint:CGPointMake(progress * self.frame.size.width, 0)];
+//    NSLog(@"%f",aProgress);
+    if(aProgress >= 0.98){
+        progress = 0.98;
+    }else if (aProgress <= 0.02){
+        progress = 0.02;
+    }else{
+        progress = aProgress;
+    }
+    _titleLabel.textColor = [self colorOfPoint:CGPointMake(progress * self.frame.size.width, 0)];
 }
 
 - (CAGradientLayer *)gradientLayer{
@@ -55,8 +56,8 @@
         _gradientLayer.frame = newGradientLayerFrame;
         
         //添加渐变的颜色组合
-        _gradientLayer.colors = [NSArray arrayWithObjects:(id)[[_normalColor colorWithAlphaComponent:1]CGColor],
-                                (id)[[_selectedColor colorWithAlphaComponent:1]CGColor],
+        _gradientLayer.colors = [NSArray arrayWithObjects:(id)[_normalColor CGColor],
+                                (id)[_selectedColor CGColor],
                                 nil];
         
         _gradientLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0],

@@ -19,27 +19,27 @@
 @interface ViewController ()<WTSegmentDataSource,WTSegmentDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView1;
-@property (nonatomic, strong) WTSegment *segment;
+@property (nonatomic, strong) WTSegment *segment1;
 @property (nonatomic, strong) NSArray *data;
 
 @end
 
 @implementation ViewController
-@synthesize scrollView1,segment;
+@synthesize scrollView1,segment1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.data = @[@"标题1",@"标题2",@"标题3",@"标题4",@"标题5",@"标题6",@"标题7",@"标题8",@"标题9",@"标题10",@"标题11"];
     
-    segment = [[WTSegment alloc]initWithFrame:CGRectMake(0, 20, ScreenW, SegmentH) style:WTSegmentStylePlain];
-    segment.backgroundColor = [UIColor colorWithHexColor:@"1b2735"];
-    segment.cursorColor = [UIColor colorWithHexColor:@"369fea"];
-    segment.seperateColor = [UIColor colorWithHexColor:@"369fea"];
-    segment.cursorStyle = WTSegmentCursorStyleBottom;
-    segment.dataSource = self;
-    segment.delegate = self;
-    [self.view addSubview:segment];
+    segment1 = [[WTSegment alloc]initWithFrame:CGRectMake(0, 20, ScreenW, SegmentH) style:WTSegmentStylePlain];
+    segment1.backgroundColor = [UIColor colorWithHexColor:@"1b2735"];
+    segment1.cursorColor = [UIColor colorWithHexColor:@"369fea"];
+    segment1.seperateColor = [UIColor colorWithHexColor:@"369fea"];
+    segment1.cursorStyle = WTSegmentCursorStyleBottom;
+    segment1.dataSource = self;
+    segment1.delegate = self;
+    [self.view addSubview:segment1];
     
     scrollView1 = [[UIScrollView alloc]initWithFrame:CGRectMake(0, SegmentH + 20, ScreenW, ScreenH - SegmentH)];
     scrollView1.pagingEnabled = YES;
@@ -72,7 +72,7 @@
 //     [scrollView1 scrollRectToVisible:CGRectMake(0, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
 //    [segment reloadSegment];
     
-    [segment scrollToRow:3 animation:YES];
+    [segment1 scrollToRow:3 animation:YES];
     [scrollView1 scrollRectToVisible:CGRectMake(ScreenW * 3, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
 }
 
@@ -83,15 +83,15 @@
 
 - (UIView<WTSegmentProtocol> *)WTSegment:(WTSegment *)segment itemAtRow:(NSInteger)row{
     WTSegmentItem *item = [[WTSegmentItem alloc]init];
-    item.titleLabel.text = self.data[row];
     item.titleLabel.font = [UIFont systemFontOfSize:15];
     item.selectedColor = [UIColor colorWithHexColor:@"369fea"];
     item.normalColor = [UIColor lightGrayColor];
+    item.titleLabel.text = self.data[row];
     return item;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [segment scrollToOffset:scrollView.contentOffset.x];
+    [segment1 scrollToOffset:scrollView.contentOffset.x];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
@@ -107,7 +107,8 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    [segment scrollToRow:scrollView.contentOffset.x / ScreenW animation:YES];
+    NSLog(@"%s",__FUNCTION__);
+    [segment1 scrollToRow:scrollView.contentOffset.x / ScreenW animation:YES];
 }
 
 #pragma mark - WTSegmentDelegate
