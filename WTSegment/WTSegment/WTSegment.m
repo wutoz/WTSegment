@@ -136,7 +136,11 @@ typedef NS_ENUM(NSInteger, WTSegmentEventSource) {
     }else{
         [self.floorView setContentSize:CGSizeZero];
     }
-    
+}
+
+#pragma mark - 刷新
+- (void)reloadSegment{
+    [self setUp];
 }
 
 #pragma mark - 滑动事件
@@ -157,50 +161,6 @@ typedef NS_ENUM(NSInteger, WTSegmentEventSource) {
     [self updateCursorOffset:itemOffset];
     [self updateItemOffset:itemOffset];
     [self updateScrollViewOffset:itemOffset];
-}
-
-#pragma mark - Utils
-- (void)updateCursorOffset:(CGFloat)offset{
-    [self.cursorView setBackgroundColor:_cursorColor];
-    switch (_cursorStyle) {
-        case WTSegmentCursorStyleBottom:
-            [self.cursorView setFrame:CGRectMake(offset, FRAME_H - CURSOR_H, _itemWidth, CURSOR_H)];
-            break;
-        case WTSegmentCursorStyleMiddle:
-            self.cursorView.layer.cornerRadius = 10.0f;
-            [self.cursorView setFrame:CGRectMake(offset, CURSOR_H, _itemWidth, FRAME_H - CURSOR_H * 2)];
-            break;
-        case WTSegmentCursorStyleTop:
-            [self.cursorView setFrame:CGRectMake(offset, 0, _itemWidth, CURSOR_H)];
-            break;
-    }
-}
-
-- (void)updateScrollViewOffset:(CGFloat)offset{
-    if(offset > _itemWidth * (_itemsMax - 3) && offset <= _itemWidth * (_rows - 3) && _rows > _itemsMax){
-        [self.floorView setContentOffset:CGPointMake(_itemWidth * (3 - _itemsMax) + offset, self.floorView.contentOffset.y)];
-    }
-}
-
-- (void)updateItemOffset:(CGFloat)offset{
-    if(self.eventSource == WTSegmentEventSourceClick) return;
-    
-    UIView<WTSegmentProtocol> *item;
-    item = [self itemAtRow:floorf(offset / _itemWidth)];
-    [item setProgress:1 - offset / _itemWidth + floorf(offset / _itemWidth)];
-    
-    item = [self itemAtRow:floorf(offset / _itemWidth) + 1];
-    [item setProgress:offset / _itemWidth - floorf(offset / _itemWidth)];
-}
-
-- (UIView<WTSegmentProtocol> *)itemAtRow:(NSInteger)row{
-    if(row < 0 || row >= self.items.count) return nil;
-    return [self.items objectAtIndex:row];
-}
-
-#pragma mark - 刷新
-- (void)reloadSegment{
-    [self setUp];
 }
 
 #pragma mark - 触摸事件
@@ -248,6 +208,45 @@ typedef NS_ENUM(NSInteger, WTSegmentEventSource) {
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.selItem setSelected:NO];
+}
+
+#pragma mark - Utils
+- (void)updateCursorOffset:(CGFloat)offset{
+    [self.cursorView setBackgroundColor:_cursorColor];
+    switch (_cursorStyle) {
+        case WTSegmentCursorStyleBottom:
+            [self.cursorView setFrame:CGRectMake(offset, FRAME_H - CURSOR_H, _itemWidth, CURSOR_H)];
+            break;
+        case WTSegmentCursorStyleMiddle:
+            self.cursorView.layer.cornerRadius = 10.0f;
+            [self.cursorView setFrame:CGRectMake(offset, CURSOR_H, _itemWidth, FRAME_H - CURSOR_H * 2)];
+            break;
+        case WTSegmentCursorStyleTop:
+            [self.cursorView setFrame:CGRectMake(offset, 0, _itemWidth, CURSOR_H)];
+            break;
+    }
+}
+
+- (void)updateScrollViewOffset:(CGFloat)offset{
+    if(offset > _itemWidth * (_itemsMax - 3) && offset <= _itemWidth * (_rows - 3) && _rows > _itemsMax){
+        [self.floorView setContentOffset:CGPointMake(_itemWidth * (3 - _itemsMax) + offset, self.floorView.contentOffset.y)];
+    }
+}
+
+- (void)updateItemOffset:(CGFloat)offset{
+    if(self.eventSource == WTSegmentEventSourceClick) return;
+    
+    UIView<WTSegmentProtocol> *item;
+    item = [self itemAtRow:floorf(offset / _itemWidth)];
+    [item setProgress:1 - offset / _itemWidth + floorf(offset / _itemWidth)];
+    
+    item = [self itemAtRow:floorf(offset / _itemWidth) + 1];
+    [item setProgress:offset / _itemWidth - floorf(offset / _itemWidth)];
+}
+
+- (UIView<WTSegmentProtocol> *)itemAtRow:(NSInteger)row{
+    if(row < 0 || row >= self.items.count) return nil;
+    return [self.items objectAtIndex:row];
 }
 
 @end
