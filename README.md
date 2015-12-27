@@ -4,6 +4,8 @@
 
 UITableView风格的自定义SegmentView
 
+![WTSegment](https://github.com/wutongr/WTSegment/blob/master//example.gif)
+
 ## 安装
 
 ### 源文件
