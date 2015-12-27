@@ -28,11 +28,6 @@
 #define FRAME_H           (self.frame.size.height)
 #define FRAME_W           (self.frame.size.width)
 
-typedef NS_ENUM(NSInteger, WTSegmentEventSource) {
-    WTSegmentEventSourceClick = 1,
-    WTSegmentEventSourceScroll
-};
-
 @interface WTSegment ()
 
 @property (nonatomic, strong) UIScrollView *floorView;
@@ -40,7 +35,6 @@ typedef NS_ENUM(NSInteger, WTSegmentEventSource) {
 @property (nonatomic, strong) UIView<WTSegmentProtocol> *crtItem;
 @property (nonatomic, strong) UIView<WTSegmentProtocol> *selItem;
 @property (nonatomic, strong) NSMutableArray *items;
-@property (nonatomic, assign) WTSegmentEventSource eventSource;
 @property (nonatomic, assign) NSInteger rows;
 @property (nonatomic, assign) CGFloat itemWidth;
 
@@ -52,9 +46,9 @@ typedef NS_ENUM(NSInteger, WTSegmentEventSource) {
 - (instancetype)initWithFrame:(CGRect)frame style:(WTSegmentStyle)style{
     if(self = [super initWithFrame:frame]){
         _style = style;
+        _items = [[NSMutableArray alloc]init];
         _itemsMax = ITEM_MAX;
         _cursorStyle = WTSegmentCursorStyleBottom;
-        _items = [[NSMutableArray alloc]init];
         
         [self addSubview:self.floorView];
         [self.floorView addSubview:self.cursorView];
@@ -152,8 +146,6 @@ typedef NS_ENUM(NSInteger, WTSegmentEventSource) {
         self.crtItem = self.selItem;
         _selectedIndex = [self.items indexOfObject:self.crtItem];
     }
-    
-    [self setEventSource:WTSegmentEventSourceScroll];
 }
 
 - (void)scrollToOffset:(CGFloat)offset{
@@ -202,8 +194,6 @@ typedef NS_ENUM(NSInteger, WTSegmentEventSource) {
     if(_delegate && [_delegate respondsToSelector:@selector(WTSegment:didSelectedAtRow:)]){
         [_delegate WTSegment:self didSelectedAtRow:_selectedIndex];
     }
-    
-    [self setEventSource:WTSegmentEventSourceClick];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -228,14 +218,18 @@ typedef NS_ENUM(NSInteger, WTSegmentEventSource) {
 }
 
 - (void)updateScrollViewOffset:(CGFloat)offset{
-    if(offset > _itemWidth * (_itemsMax - 3) && offset <= _itemWidth * (_rows - 3) && _rows > _itemsMax){
+    if(_rows <= _itemsMax) return;
+
+    if(offset > _itemWidth * (_itemsMax - 3) && offset < _itemWidth * (_rows - 3)){
         [self.floorView setContentOffset:CGPointMake(_itemWidth * (3 - _itemsMax) + offset, self.floorView.contentOffset.y)];
+    }else if (offset <= _itemWidth * (_itemsMax - 3)){
+        [self.floorView setContentOffset:CGPointMake(0, self.floorView.contentOffset.y)];
+    }else if (offset >= _itemWidth * (_rows - 3)){
+        [self.floorView setContentOffset:CGPointMake(_itemWidth * (_rows - _itemsMax), self.floorView.contentOffset.y)];
     }
 }
 
-- (void)updateItemOffset:(CGFloat)offset{
-    if(self.eventSource == WTSegmentEventSourceClick) return;
-    
+- (void)updateItemOffset:(CGFloat)offset{    
     UIView<WTSegmentProtocol> *item;
     item = [self itemAtRow:floorf(offset / _itemWidth)];
     [item setProgress:1 - offset / _itemWidth + floorf(offset / _itemWidth)];

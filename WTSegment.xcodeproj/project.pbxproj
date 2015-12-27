@@ -13,7 +13,7 @@
 		47CAED3F1C2796AA00816691 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47CAED3E1C2796AA00816691 /* Assets.xcassets */; };
 		47CAED421C2796AA00816691 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47CAED401C2796AA00816691 /* LaunchScreen.storyboard */; };
 		47CAED4F1C27979E00816691 /* WTSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED4E1C27979E00816691 /* WTSegment.m */; };
-		47CAED521C27987000816691 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED511C27987000816691 /* ItemView.m */; };
+		47CAED521C27987000816691 /* ChildView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED511C27987000816691 /* ChildView.m */; };
 		47CAED5B1C27D8A500816691 /* UIColor+Addtions.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED5A1C27D8A500816691 /* UIColor+Addtions.m */; };
 		47CAED5D1C27DFA000816691 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CAED5C1C27DFA000816691 /* QuartzCore.framework */; };
 		47CAED5F1C27FD6E00816691 /* WTSegment.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 47CAED5E1C27FD6E00816691 /* WTSegment.podspec */; };
@@ -32,8 +32,8 @@
 		47CAED431C2796AA00816691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47CAED4D1C27979E00816691 /* WTSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSegment.h; sourceTree = "<group>"; };
 		47CAED4E1C27979E00816691 /* WTSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSegment.m; sourceTree = "<group>"; };
-		47CAED501C27987000816691 /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
-		47CAED511C27987000816691 /* ItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
+		47CAED501C27987000816691 /* ChildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildView.h; sourceTree = "<group>"; };
+		47CAED511C27987000816691 /* ChildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildView.m; sourceTree = "<group>"; };
 		47CAED591C27D8A500816691 /* UIColor+Addtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addtions.h"; sourceTree = "<group>"; };
 		47CAED5A1C27D8A500816691 /* UIColor+Addtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addtions.m"; sourceTree = "<group>"; };
 		47CAED5C1C27DFA000816691 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -85,8 +85,8 @@
 				47CAED681C282B3700816691 /* WTSegmentItem.m */,
 				47CAED591C27D8A500816691 /* UIColor+Addtions.h */,
 				47CAED5A1C27D8A500816691 /* UIColor+Addtions.m */,
-				47CAED501C27987000816691 /* ItemView.h */,
-				47CAED511C27987000816691 /* ItemView.m */,
+				47CAED501C27987000816691 /* ChildView.h */,
+				47CAED511C27987000816691 /* ChildView.m */,
 				47CAED3E1C2796AA00816691 /* Assets.xcassets */,
 				47CAED401C2796AA00816691 /* LaunchScreen.storyboard */,
 				47CAED431C2796AA00816691 /* Info.plist */,
@@ -183,7 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47CAED521C27987000816691 /* ItemView.m in Sources */,
+				47CAED521C27987000816691 /* ChildView.m in Sources */,
 				47CAED4F1C27979E00816691 /* WTSegment.m in Sources */,
 				47CAED5B1C27D8A500816691 /* UIColor+Addtions.m in Sources */,
 				47CAED3A1C2796AA00816691 /* ViewController.m in Sources */,

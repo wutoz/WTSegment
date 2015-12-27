@@ -1,5 +1,5 @@
 //
-// WTSegment.h
+// WTSegmentProtocol.h
 //
 // Copyright (c) 2015 wutongr (http://www.wutongr.com/)
 //

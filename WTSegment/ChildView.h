@@ -1,5 +1,5 @@
 //
-//  ItemView.h
+//  ChildView.h
 //  WTSegment
 //
 //  Created by 梧桐 on 15/12/21.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ItemView : UIView
-
-@property (nonatomic, strong) NSString *detail;
+@interface ChildView : UIView
 
 @end

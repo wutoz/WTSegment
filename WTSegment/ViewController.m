@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "WTSegment.h"
-#import "ItemView.h"
+#import "ChildView.h"
 #import "UIColor+Addtions.h"
 #import "WTSegmentItem.h"
 
@@ -48,8 +48,7 @@
     [self.view addSubview:scrollView1];
     
     for(int i = 0; i < self.data.count; i++){
-        ItemView *view = [[ItemView alloc]initWithFrame:CGRectMake(ScreenW * i, 0, ScreenW, ScreenH - SegmentH)];
-        view.detail = [NSString stringWithFormat:@"第%d个页面",i + 1];
+        ChildView *view = [[ChildView alloc]initWithFrame:CGRectMake(ScreenW * i, 0, ScreenW, ScreenH - SegmentH)];
         view.backgroundColor = [UIColor colorWithRed:arc4random() % 255 / 255.0
                                                green:arc4random() % 255 / 255.0
                                                 blue:arc4random() % 255 / 255.0
@@ -73,7 +72,7 @@
 //    [segment reloadSegment];
     
     [segment1 scrollToRow:3 animation:YES];
-    [scrollView1 scrollRectToVisible:CGRectMake(ScreenW * 3, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
+    [scrollView1 scrollRectToVisible:CGRectMake(ScreenW * 3, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:NO];
 }
 
 #pragma mark - WTSegmentDataSource
@@ -107,14 +106,13 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    NSLog(@"%s",__FUNCTION__);
     [segment1 scrollToRow:scrollView.contentOffset.x / ScreenW animation:YES];
 }
 
 #pragma mark - WTSegmentDelegate
 - (void)WTSegment:(WTSegment *)segment didSelectedAtRow:(NSInteger)row{
     NSLog(@"%s",__FUNCTION__);
-    [scrollView1 scrollRectToVisible:CGRectMake(ScreenW * row, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:YES];
+    [scrollView1 scrollRectToVisible:CGRectMake(ScreenW * row, SegmentH + 20, ScreenW, ScreenH - SegmentH) animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {
