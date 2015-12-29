@@ -209,7 +209,7 @@
             break;
         case WTSegmentCursorStyleMiddle:
             self.cursorView.layer.cornerRadius = 10.0f;
-            [self.cursorView setFrame:CGRectMake(offset, CURSOR_H, _itemWidth, FRAME_H - CURSOR_H * 2)];
+            [self.cursorView setFrame:CGRectMake(offset, 6, _itemWidth, FRAME_H - 6 * 2)];
             break;
         case WTSegmentCursorStyleTop:
             [self.cursorView setFrame:CGRectMake(offset, 0, _itemWidth, CURSOR_H)];
