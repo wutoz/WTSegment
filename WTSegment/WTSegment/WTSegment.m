@@ -48,6 +48,7 @@
         _style = style;
         _items = [[NSMutableArray alloc]init];
         _itemsMax = ITEM_MAX;
+        _cornerRadius = 10.0f;
         _cursorStyle = WTSegmentCursorStyleBottom;
         
         [self addSubview:self.floorView];
@@ -208,7 +209,7 @@
             [self.cursorView setFrame:CGRectMake(offset, FRAME_H - CURSOR_H, _itemWidth, CURSOR_H)];
             break;
         case WTSegmentCursorStyleMiddle:
-            self.cursorView.layer.cornerRadius = 10.0f;
+            self.cursorView.layer.cornerRadius = _cornerRadius;
             [self.cursorView setFrame:CGRectMake(offset, 6, _itemWidth, FRAME_H - 6 * 2)];
             break;
         case WTSegmentCursorStyleTop:
