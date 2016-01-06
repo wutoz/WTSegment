@@ -39,14 +39,14 @@
 
 - (void)setProgress:(CGFloat)aProgress{
 //    NSLog(@"%f",aProgress);
-    if(aProgress >= 0.98){
-        progress = 0.98;
-    }else if (aProgress <= 0.02){
-        progress = 0.02;
-    }else{
-        progress = aProgress;
-    }
-    _titleLabel.textColor = [self colorOfPoint:CGPointMake(progress * self.frame.size.width, 0)];
+//    if(aProgress >= 0.98){
+//        progress = 0.98;
+//    }else if (aProgress <= 0.02){
+//        progress = 0.02;
+//    }else{
+//        progress = aProgress;
+//    }
+//    _titleLabel.textColor = [self colorOfPoint:CGPointMake(progress * self.frame.size.width, 0)];
 }
 
 - (CAGradientLayer *)gradientLayer{

@@ -23,7 +23,6 @@
 
 #import "WTSegment.h"
 
-#define CURSOR_H          3
 #define ITEM_MAX          6
 #define FRAME_H           (self.frame.size.height)
 #define FRAME_W           (self.frame.size.width)
@@ -49,6 +48,7 @@
         _items = [[NSMutableArray alloc]init];
         _itemsMax = ITEM_MAX;
         _cornerRadius = 10.0f;
+        _cursorHeight = 3;
         _cursorStyle = WTSegmentCursorStyleBottom;
         
         [self addSubview:self.floorView];
@@ -113,13 +113,13 @@
         }
         switch (_cursorStyle) {
             case WTSegmentCursorStyleBottom:
-                [obj setFrame:CGRectMake(_itemWidth * idx, 0, _itemWidth, FRAME_H - CURSOR_H)];
+                [obj setFrame:CGRectMake(_itemWidth * idx, 0, _itemWidth, FRAME_H - _cursorHeight)];
                 break;
             case WTSegmentCursorStyleMiddle:
-                [obj setFrame:CGRectMake(_itemWidth * idx, CURSOR_H, _itemWidth, FRAME_H - CURSOR_H * 2)];
+                [obj setFrame:CGRectMake(_itemWidth * idx, _cursorHeight, _itemWidth, FRAME_H - _cursorHeight * 2)];
                 break;
             case WTSegmentCursorStyleTop:
-                [obj setFrame:CGRectMake(_itemWidth * idx, CURSOR_H, _itemWidth, FRAME_H - CURSOR_H)];
+                [obj setFrame:CGRectMake(_itemWidth * idx, _cursorHeight, _itemWidth, FRAME_H - _cursorHeight)];
                 break;
         }
         
@@ -206,14 +206,14 @@
     [self.cursorView setBackgroundColor:_cursorColor];
     switch (_cursorStyle) {
         case WTSegmentCursorStyleBottom:
-            [self.cursorView setFrame:CGRectMake(offset, FRAME_H - CURSOR_H, _itemWidth, CURSOR_H)];
+            [self.cursorView setFrame:CGRectMake(offset, FRAME_H - _cursorHeight, _itemWidth, _cursorHeight)];
             break;
         case WTSegmentCursorStyleMiddle:
             self.cursorView.layer.cornerRadius = _cornerRadius;
             [self.cursorView setFrame:CGRectMake(offset, 6, _itemWidth, FRAME_H - 6 * 2)];
             break;
         case WTSegmentCursorStyleTop:
-            [self.cursorView setFrame:CGRectMake(offset, 0, _itemWidth, CURSOR_H)];
+            [self.cursorView setFrame:CGRectMake(offset, 0, _itemWidth, _cursorHeight)];
             break;
     }
 }

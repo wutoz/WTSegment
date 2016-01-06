@@ -119,7 +119,7 @@
 #pragma mark - WTSegmentDelegate
 - (void)WTSegment:(WTSegment *)segment didSelectedAtRow:(NSInteger)row{
     NSLog(@"%s",__FUNCTION__);
-    [scrollView1 setContentOffset:CGPointMake(ScreenW * row, scrollView1.contentOffset.y)];
+    [scrollView1 setContentOffset:CGPointMake(ScreenW * row, scrollView1.contentOffset.y) animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
