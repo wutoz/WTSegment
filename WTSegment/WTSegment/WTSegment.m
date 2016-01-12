@@ -167,6 +167,8 @@
             *stop = YES;
         }
     }];
+    
+    [[self nextResponder] touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -183,6 +185,8 @@
             *stop = YES;
         }
      }];
+    
+    [[self nextResponder] touchesMoved:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -195,10 +199,14 @@
     if(_delegate && [_delegate respondsToSelector:@selector(WTSegment:didSelectedAtRow:)]){
         [_delegate WTSegment:self didSelectedAtRow:_selectedIndex];
     }
+    
+    [[self nextResponder] touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.selItem setSelected:NO];
+    
+    [[self nextResponder] touchesCancelled:touches withEvent:event];
 }
 
 #pragma mark - Utils
