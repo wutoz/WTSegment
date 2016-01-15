@@ -108,6 +108,7 @@
         if(idx == 0){
             [obj setSelected:YES];
             self.crtItem = obj;
+            self.selItem = obj;
         }else{
             [obj setSelected:NO];
         }
