@@ -168,7 +168,7 @@
             *stop = YES;
         }
     }];
-    
+    //传递到下级响应
     [[self nextResponder] touchesBegan:touches withEvent:event];
 }
 
