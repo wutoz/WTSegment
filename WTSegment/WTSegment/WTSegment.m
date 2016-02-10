@@ -42,17 +42,14 @@
 @implementation WTSegment
 
 #pragma mark - 初始化
-- (instancetype)initWithFrame:(CGRect)frame style:(WTSegmentStyle)style{
-    if(self = [super initWithFrame:frame]){
-        _style = style;
-        _items = [[NSMutableArray alloc]init];
-        _itemsMax = ITEM_MAX;
-        _cornerRadius = 10.0f;
-        _cursorHeight = 3;
-        _cursorStyle = WTSegmentCursorStyleBottom;
-        
-        [self addSubview:self.floorView];
-        [self.floorView addSubview:self.cursorView];
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    return [self initWithFrame:frame style:WTSegmentStylePlain];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if(self = [super initWithCoder:aDecoder]){
+        [self commonInitWithStyle:WTSegmentStylePlain];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self setUp];
@@ -61,12 +58,32 @@
     return self;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame style:(WTSegmentStyle)style{
+    if(self = [super initWithFrame:frame]){
+        [self commonInitWithStyle:style];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setUp];
+        });
+    }
+    return self;
+}
+
+- (void)commonInitWithStyle:(WTSegmentStyle)style{
+    _style = style;
+    _itemsMax = ITEM_MAX;
+    _cornerRadius = 10.0f;
+    _cursorHeight = 3;
+    _cursorStyle = WTSegmentCursorStyleBottom;
+}
+
 - (UIScrollView *)floorView{
     if(!_floorView){
         _floorView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, FRAME_W, FRAME_H)];
         [_floorView setBounces:NO];
         [_floorView setShowsHorizontalScrollIndicator:NO];
         [_floorView setShowsVerticalScrollIndicator:NO];
+        [self addSubview:_floorView];
     }
     return _floorView;
 }
@@ -74,8 +91,16 @@
 - (UIView *)cursorView{
     if(!_cursorView){
         _cursorView = [[UIView alloc]initWithFrame:CGRectZero];
+        [self.floorView addSubview:_cursorView];
     }
     return _cursorView;
+}
+
+- (NSMutableArray *)items{
+    if(!_items){
+        _items = [[NSMutableArray alloc]init];
+    }
+    return _items;
 }
 
 #pragma mark - 构造控件
