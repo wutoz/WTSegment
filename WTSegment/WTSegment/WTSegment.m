@@ -111,7 +111,7 @@
     
     [self updateCursorOffset:0];
     
-    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL *stop) {
         [obj removeFromSuperview];
     }];
     
@@ -129,7 +129,7 @@
             break;
     }
     
-    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL *stop) {
         if(idx == 0){
             [obj setSelected:YES];
             self.crtItem = obj;
@@ -185,7 +185,7 @@
 #pragma mark - 触摸事件
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     CGPoint location = [[touches anyObject] locationInView:self.floorView];
-    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL *stop) {
         if(CGRectContainsPoint(obj.frame, location))
         {
             [obj setSelected:YES];
@@ -200,7 +200,7 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     CGPoint location = [[touches anyObject] locationInView:self.floorView];
     
-    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL *stop) {
         if(CGRectContainsPoint(obj.frame, location))
         {
             [obj setSelected:YES];
