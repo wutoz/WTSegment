@@ -1,6 +1,6 @@
 # WTSegment
 
-[![release](https://img.shields.io/badge/release-v0.2.2-orange.svg)](https://github.com/wutongr/WTSegment/releases) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/wutongr/WTSegment/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/wutongr/travis-ci.png?branch=master)](https://travis-ci.org/wutongr/travis-ci) [![release](https://img.shields.io/badge/release-v0.2.2-orange.svg)](https://github.com/wutongr/WTSegment/releases) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/wutongr/WTSegment/blob/master/LICENSE)
 
 UITableView风格的自定义SegmentView
 
