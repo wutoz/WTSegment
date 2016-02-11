@@ -41,7 +41,7 @@
 
 @implementation WTSegment
 
-#pragma mark - 初始化
+#pragma mark - 初始化 
 
 - (instancetype)initWithFrame:(CGRect)frame{
     return [self initWithFrame:frame style:WTSegmentStylePlain];
