@@ -11,13 +11,13 @@
 		47CAED371C2796AA00816691 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED361C2796AA00816691 /* AppDelegate.m */; };
 		47CAED3A1C2796AA00816691 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED391C2796AA00816691 /* ViewController.m */; };
 		47CAED3F1C2796AA00816691 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47CAED3E1C2796AA00816691 /* Assets.xcassets */; };
-		47CAED421C2796AA00816691 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47CAED401C2796AA00816691 /* LaunchScreen.storyboard */; };
 		47CAED4F1C27979E00816691 /* WTSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED4E1C27979E00816691 /* WTSegment.m */; };
 		47CAED521C27987000816691 /* ChildView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED511C27987000816691 /* ChildView.m */; };
 		47CAED5B1C27D8A500816691 /* UIColor+Addtions.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED5A1C27D8A500816691 /* UIColor+Addtions.m */; };
 		47CAED5D1C27DFA000816691 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CAED5C1C27DFA000816691 /* QuartzCore.framework */; };
 		47CAED5F1C27FD6E00816691 /* WTSegment.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 47CAED5E1C27FD6E00816691 /* WTSegment.podspec */; };
 		47CAED691C282B3700816691 /* WTSegmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED681C282B3700816691 /* WTSegmentItem.m */; };
+		D86B69F01C6CD9A400ECC298 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D86B69EF1C6CD9A400ECC298 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,6 @@
 		47CAED381C2796AA00816691 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		47CAED391C2796AA00816691 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		47CAED3E1C2796AA00816691 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		47CAED411C2796AA00816691 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47CAED431C2796AA00816691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47CAED4D1C27979E00816691 /* WTSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSegment.h; sourceTree = "<group>"; };
 		47CAED4E1C27979E00816691 /* WTSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSegment.m; sourceTree = "<group>"; };
@@ -41,6 +40,7 @@
 		47CAED631C2828B400816691 /* WTSegmentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSegmentProtocol.h; sourceTree = "<group>"; };
 		47CAED671C282B3700816691 /* WTSegmentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSegmentItem.h; sourceTree = "<group>"; };
 		47CAED681C282B3700816691 /* WTSegmentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSegmentItem.m; sourceTree = "<group>"; };
+		D86B69EF1C6CD9A400ECC298 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +58,7 @@
 		47CAED261C2796AA00816691 = {
 			isa = PBXGroup;
 			children = (
+				D86B69EF1C6CD9A400ECC298 /* Default-568h@2x.png */,
 				47CAED5E1C27FD6E00816691 /* WTSegment.podspec */,
 				47CAED5C1C27DFA000816691 /* QuartzCore.framework */,
 				47CAED311C2796AA00816691 /* WTSegment */,
@@ -88,7 +89,6 @@
 				47CAED501C27987000816691 /* ChildView.h */,
 				47CAED511C27987000816691 /* ChildView.m */,
 				47CAED3E1C2796AA00816691 /* Assets.xcassets */,
-				47CAED401C2796AA00816691 /* LaunchScreen.storyboard */,
 				47CAED431C2796AA00816691 /* Info.plist */,
 				47CAED321C2796AA00816691 /* Supporting Files */,
 			);
@@ -170,9 +170,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47CAED421C2796AA00816691 /* LaunchScreen.storyboard in Resources */,
 				47CAED3F1C2796AA00816691 /* Assets.xcassets in Resources */,
 				47CAED5F1C27FD6E00816691 /* WTSegment.podspec in Resources */,
+				D86B69F01C6CD9A400ECC298 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,17 +194,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		47CAED401C2796AA00816691 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				47CAED411C2796AA00816691 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		47CAED441C2796AA00816691 /* Debug */ = {
