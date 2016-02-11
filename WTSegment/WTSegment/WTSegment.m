@@ -49,7 +49,9 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     if(self = [super initWithCoder:aDecoder]){
-        [self commonInitWithStyle:WTSegmentStylePlain];
+        _style = WTSegmentStylePlain;
+        
+        [self commonInit];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self setUp];
@@ -60,7 +62,9 @@
 
 - (instancetype)initWithFrame:(CGRect)frame style:(WTSegmentStyle)style{
     if(self = [super initWithFrame:frame]){
-        [self commonInitWithStyle:style];
+        _style = style;
+        
+        [self commonInit];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self setUp];
@@ -69,8 +73,7 @@
     return self;
 }
 
-- (void)commonInitWithStyle:(WTSegmentStyle)style{
-    _style = style;
+- (void)commonInit{
     _itemsMax = ITEM_MAX;
     _cornerRadius = 10.0f;
     _cursorHeight = 3;
