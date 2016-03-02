@@ -27,9 +27,44 @@
 #define FRAME_H           (self.frame.size.height)
 #define FRAME_W           (self.frame.size.width)
 
+@interface WTScrollView : UIScrollView
+
+@end
+
+@implementation WTScrollView
+
+- (void)setContentOffset:(CGPoint)contentOffset{
+    if(!CGPointEqualToPoint(self.contentOffset, CGPointMake(self.contentOffset.x, 0))){
+        contentOffset = CGPointMake(self.contentOffset.x, 0);
+    }
+    [super setContentOffset:contentOffset];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [[self nextResponder] touchesBegan:touches withEvent:event];
+    //    [super touchesBegan:touches withEvent:event];
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    [[self nextResponder] touchesMoved:touches withEvent:event];
+    //    [super touchesMoved:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    [[self nextResponder] touchesEnded:touches withEvent:event];
+    //    [super touchesEnded:touches withEvent:event];
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+    [[self nextResponder]touchesCancelled:touches withEvent:event];
+    //    [super touchesCancelled:touches withEvent:event];
+}
+
+@end
+
 @interface WTSegment ()
 
-@property (nonatomic, strong) UIScrollView *floorView;
+@property (nonatomic, strong) WTScrollView *floorView;
 @property (nonatomic, strong) UIView *cursorView;
 @property (nonatomic, strong) UIView<WTSegmentProtocol> *crtItem;
 @property (nonatomic, strong) UIView<WTSegmentProtocol> *selItem;
@@ -80,9 +115,9 @@
     _cursorStyle = WTSegmentCursorStyleBottom;
 }
 
-- (UIScrollView *)floorView{
+- (WTScrollView *)floorView{
     if(!_floorView){
-        _floorView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, FRAME_W, FRAME_H)];
+        _floorView = [[WTScrollView alloc]initWithFrame:CGRectMake(0, 0, FRAME_W, FRAME_H)];
         [_floorView setBounces:NO];
         [_floorView setShowsHorizontalScrollIndicator:NO];
         [_floorView setShowsVerticalScrollIndicator:NO];
@@ -279,30 +314,6 @@
 - (UIView<WTSegmentProtocol> *)itemAtRow:(NSInteger)row{
     if(row < 0 || row >= self.items.count) return nil;
     return [self.items objectAtIndex:row];
-}
-
-@end
-
-@implementation UIScrollView (UITouch)
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [[self nextResponder] touchesBegan:touches withEvent:event];
-//    [super touchesBegan:touches withEvent:event];
-}
-
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    [[self nextResponder] touchesMoved:touches withEvent:event];
-//    [super touchesMoved:touches withEvent:event];
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    [[self nextResponder] touchesEnded:touches withEvent:event];
-//    [super touchesEnded:touches withEvent:event];
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
-    [[self nextResponder]touchesCancelled:touches withEvent:event];
-//    [super touchesCancelled:touches withEvent:event];
 }
 
 @end
