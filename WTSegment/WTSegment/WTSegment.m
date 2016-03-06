@@ -34,6 +34,7 @@
 @implementation WTScrollView
 
 - (void)setContentOffset:(CGPoint)contentOffset{
+    //Fix navigationBarHidden Bug
     if(!CGPointEqualToPoint(self.contentOffset, CGPointMake(self.contentOffset.x, 0))){
         contentOffset = CGPointMake(self.contentOffset.x, 0);
     }
@@ -89,7 +90,7 @@
         [self commonInit];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self setUp];
+            [self setup];
         });
     }
     return self;
@@ -102,7 +103,7 @@
         [self commonInit];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self setUp];
+            [self setup];
         });
     }
     return self;
@@ -142,7 +143,7 @@
 }
 
 #pragma mark - 构造控件
-- (void)setUp{
+- (void)setup{
     _selectedIndex = 0;
     _rows = [_dataSource numberOfRowsInWTSegment:self];
     _itemWidth = _rows <= _itemsMax ? FRAME_W / _rows : FRAME_W / _itemsMax;
@@ -199,7 +200,7 @@
 
 #pragma mark - 刷新
 - (void)reloadSegment{
-    [self setUp];
+    [self setup];
 }
 
 #pragma mark - 滑动事件
