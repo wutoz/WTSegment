@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "WTSegmentProtocol.h"
+
 /*!
  *  控件风格
  */
@@ -53,6 +53,10 @@ typedef NS_ENUM(NSInteger,WTSegmentCursorStyle) {
      */
     WTSegmentCursorStyleTop
 };
+/*!
+ *  子控件协议
+ */
+@protocol WTSegmentProtocol;
 /*!
  *  数据源代理
  */

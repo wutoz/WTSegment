@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 
 #import "WTSegment.h"
+#import "WTSegmentProtocol.h"
 
 #define ITEM_MAX          6
 #define FRAME_H           (self.frame.size.height)
@@ -80,7 +81,12 @@
 #pragma mark - 初始化 
 
 - (instancetype)initWithFrame:(CGRect)frame{
-    return [self initWithFrame:frame style:WTSegmentStylePlain];
+    if(self = [super initWithFrame:frame]){
+        _style = WTSegmentStylePlain;
+        
+        [self commonInit];
+    }
+    return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
@@ -88,10 +94,6 @@
         _style = WTSegmentStylePlain;
         
         [self commonInit];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self setup];
-        });
     }
     return self;
 }
@@ -101,12 +103,13 @@
         _style = style;
         
         [self commonInit];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self setup];
-        });
     }
     return self;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    [self setup];
 }
 
 - (void)commonInit{
