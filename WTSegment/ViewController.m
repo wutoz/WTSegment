@@ -97,7 +97,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [segment1 scrollToOffset:scrollView.contentOffset.x];
+    [segment1 scrollToOffset:scrollView.contentOffset.x * (segment1.frame.size.width / ScreenW)];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{

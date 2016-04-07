@@ -151,6 +151,9 @@
     _rows = [_dataSource numberOfRowsInWTSegment:self];
     _itemWidth = _rows <= _itemsMax ? FRAME_W / _rows : FRAME_W / _itemsMax;
     
+    [self.floorView setFrame:CGRectMake(0, 0, FRAME_W, FRAME_H)];
+    [self.cursorView setBackgroundColor:_cursorColor];
+
     [self updateCursorOffset:0];
     
     [self.items enumerateObjectsUsingBlock:^(UIView<WTSegmentProtocol> *obj, NSUInteger idx, BOOL *stop) {
@@ -279,7 +282,6 @@
 
 #pragma mark - Utils
 - (void)updateCursorOffset:(CGFloat)offset{
-    [self.cursorView setBackgroundColor:_cursorColor];
     switch (_cursorStyle) {
         case WTSegmentCursorStyleBottom:
             [self.cursorView setFrame:CGRectMake(offset, FRAME_H - _cursorHeight, _itemWidth, _cursorHeight)];
