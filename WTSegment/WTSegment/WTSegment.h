@@ -175,6 +175,13 @@ typedef NS_ENUM(NSInteger,WTSegmentCursorStyle) {
 
 @optional
 /*!
+ *  Item是否可以点击
+ *
+ *  @param segment 控件
+ *  @param row     位置
+ */
+- (BOOL)WTSegment:(WTSegment *)segment shouldSelectedAtRow:(NSInteger)row;
+/*!
  *  Item点击事件
  *
  *  @param segment 控件

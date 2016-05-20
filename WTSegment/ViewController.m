@@ -117,6 +117,10 @@
 }
 
 #pragma mark - WTSegmentDelegate
+- (BOOL)WTSegment:(WTSegment *)segment shouldSelectedAtRow:(NSInteger)row {
+    return NO;
+}
+
 - (void)WTSegment:(WTSegment *)segment didSelectedAtRow:(NSInteger)row{
     NSLog(@"%s",__FUNCTION__);
     [UIView animateWithDuration:0.2 animations:^{

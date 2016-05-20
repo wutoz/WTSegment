@@ -261,6 +261,13 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    if(_delegate && [_delegate respondsToSelector:@selector(WTSegment:shouldSelectedAtRow:)]){
+        if([_delegate WTSegment:self shouldSelectedAtRow:_selectedIndex] == NO){
+            [self touchesCancelled:touches withEvent:event];
+            return;
+        }
+    }
+    
     if(self.crtItem != self.selItem){
         [self.crtItem setSelected:NO];
         self.crtItem = self.selItem;
@@ -275,7 +282,8 @@
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.selItem setSelected:NO];
+    if(self.crtItem != self.selItem)
+        [self.selItem setSelected:NO];
     
     [[self nextResponder] touchesCancelled:touches withEvent:event];
 }
