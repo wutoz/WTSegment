@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		471D91C41CEEB5D600F359CD /* WTSegmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 471D91C31CEEB5D600F359CD /* WTSegmentTests.m */; };
 		47CAED341C2796AA00816691 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED331C2796AA00816691 /* main.m */; };
 		47CAED371C2796AA00816691 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED361C2796AA00816691 /* AppDelegate.m */; };
 		47CAED3A1C2796AA00816691 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAED391C2796AA00816691 /* ViewController.m */; };
@@ -20,7 +21,20 @@
 		D86B69F01C6CD9A400ECC298 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D86B69EF1C6CD9A400ECC298 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		471D91C61CEEB5D600F359CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47CAED271C2796AA00816691 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47CAED2E1C2796AA00816691;
+			remoteInfo = WTSegment;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		471D91C11CEEB5D600F359CD /* WTSegmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WTSegmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		471D91C31CEEB5D600F359CD /* WTSegmentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTSegmentTests.m; sourceTree = "<group>"; };
+		471D91C51CEEB5D600F359CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47CAED2F1C2796AA00816691 /* WTSegment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTSegment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47CAED331C2796AA00816691 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		47CAED351C2796AA00816691 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -44,6 +58,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		471D91BE1CEEB5D500F359CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47CAED2C1C2796AA00816691 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -55,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		471D91C21CEEB5D600F359CD /* WTSegmentTests */ = {
+			isa = PBXGroup;
+			children = (
+				471D91C31CEEB5D600F359CD /* WTSegmentTests.m */,
+				471D91C51CEEB5D600F359CD /* Info.plist */,
+			);
+			path = WTSegmentTests;
+			sourceTree = "<group>";
+		};
 		47CAED261C2796AA00816691 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +92,7 @@
 				47CAED5E1C27FD6E00816691 /* WTSegment.podspec */,
 				47CAED5C1C27DFA000816691 /* QuartzCore.framework */,
 				47CAED311C2796AA00816691 /* WTSegment */,
+				471D91C21CEEB5D600F359CD /* WTSegmentTests */,
 				47CAED301C2796AA00816691 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				47CAED2F1C2796AA00816691 /* WTSegment.app */,
+				471D91C11CEEB5D600F359CD /* WTSegmentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,6 +148,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		471D91C01CEEB5D500F359CD /* WTSegmentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 471D91CA1CEEB5D600F359CD /* Build configuration list for PBXNativeTarget "WTSegmentTests" */;
+			buildPhases = (
+				471D91BD1CEEB5D500F359CD /* Sources */,
+				471D91BE1CEEB5D500F359CD /* Frameworks */,
+				471D91BF1CEEB5D500F359CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				471D91C71CEEB5D600F359CD /* PBXTargetDependency */,
+			);
+			name = WTSegmentTests;
+			productName = WTSegmentTests;
+			productReference = 471D91C11CEEB5D600F359CD /* WTSegmentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		47CAED2E1C2796AA00816691 /* WTSegment */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47CAED461C2796AA00816691 /* Build configuration list for PBXNativeTarget "WTSegment" */;
@@ -142,6 +192,10 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "梧桐";
 				TargetAttributes = {
+					471D91C01CEEB5D500F359CD = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 47CAED2E1C2796AA00816691;
+					};
 					47CAED2E1C2796AA00816691 = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -161,11 +215,19 @@
 			projectRoot = "";
 			targets = (
 				47CAED2E1C2796AA00816691 /* WTSegment */,
+				471D91C01CEEB5D500F359CD /* WTSegmentTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		471D91BF1CEEB5D500F359CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47CAED2D1C2796AA00816691 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -179,6 +241,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		471D91BD1CEEB5D500F359CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				471D91C41CEEB5D600F359CD /* WTSegmentTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47CAED2B1C2796AA00816691 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -195,7 +265,43 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		471D91C71CEEB5D600F359CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 47CAED2E1C2796AA00816691 /* WTSegment */;
+			targetProxy = 471D91C61CEEB5D600F359CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		471D91C81CEEB5D600F359CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = WTSegmentTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wutongr.WTSegmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WTSegment.app/WTSegment";
+			};
+			name = Debug;
+		};
+		471D91C91CEEB5D600F359CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = WTSegmentTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wutongr.WTSegmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WTSegment.app/WTSegment";
+			};
+			name = Release;
+		};
 		47CAED441C2796AA00816691 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -305,6 +411,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		471D91CA1CEEB5D600F359CD /* Build configuration list for PBXNativeTarget "WTSegmentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				471D91C81CEEB5D600F359CD /* Debug */,
+				471D91C91CEEB5D600F359CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		47CAED2A1C2796AA00816691 /* Build configuration list for PBXProject "WTSegment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
