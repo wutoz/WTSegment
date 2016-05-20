@@ -262,7 +262,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     if(_delegate && [_delegate respondsToSelector:@selector(WTSegment:shouldSelectedAtRow:)]){
-        if([_delegate WTSegment:self shouldSelectedAtRow:_selectedIndex] == NO){
+        if([_delegate WTSegment:self shouldSelectedAtRow:[self.items indexOfObject:self.selItem]] == NO){
             [self touchesCancelled:touches withEvent:event];
             return;
         }
