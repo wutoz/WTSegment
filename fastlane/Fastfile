@@ -7,7 +7,8 @@ platform :mac do
   lane :test do
     scan
   end
-    
+  
+  # fastlane release version:0.3.1
   desc "Release new version"
   lane :release do |options|
       target_version = options[:version]

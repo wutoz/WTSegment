@@ -3,24 +3,49 @@
   <testsuite name="fastlane.lanes">
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.000435">
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.000668">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000452">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000269">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: ensure_git_branch" time="0.01361">
+      <testcase classname="fastlane.lanes" name="2: ensure_git_branch" time="0.00936">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: ensure_git_status_clean" time="0.008323">
+      <testcase classname="fastlane.lanes" name="3: ensure_git_status_clean" time="0.012232">
         
-          <failure message="/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/actions/actions_helper.rb:33:in `execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:162:in `block in execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:161:in `chdir'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:161:in `execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:109:in `trigger_action_by_name'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/fast_file.rb:140:in `method_missing'&#10;Fastfile:17:in `block (2 levels) in parsing_binding'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:50:in `block in execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:46:in `chdir'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:46:in `execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/lane_manager.rb:46:in `cruise_lane'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/command_line_handler.rb:30:in `handle'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/commands_generator.rb:42:in `block (2 levels) in run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:153:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/runner.rb:428:in `run_active_command'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane_core-0.43.5/lib/fastlane_core/ui/fastlane_runner.rb:26:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/delegates.rb:15:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/commands_generator.rb:175:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/commands_generator.rb:13:in `start'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/cli_tools_distributor.rb:47:in `take_off'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/bin/fastlane:5:in `&lt;top (required)&gt;'&#10;/usr/local/bin/fastlane:23:in `load'&#10;/usr/local/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;[31mGit repository is dirty! Please ensure the repo is in a clean state by commiting/stashing/discarding all changes first.[0m" />
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: scan" time="10.942137">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: number_of_commits" time="0.021401">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: increment_build_number" time="0.806905">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="7: increment_version_number" time="0.813252">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="8: version_bump_podspec" time="0.001565">
+        
+          <failure message="/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/actions/actions_helper.rb:33:in `execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:162:in `block in execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:161:in `chdir'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:161:in `execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:109:in `trigger_action_by_name'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/fast_file.rb:140:in `method_missing'&#10;Fastfile:24:in `block (2 levels) in parsing_binding'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:50:in `block in execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:46:in `chdir'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/runner.rb:46:in `execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/lane_manager.rb:46:in `cruise_lane'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/command_line_handler.rb:30:in `handle'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/commands_generator.rb:42:in `block (2 levels) in run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/command.rb:153:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/runner.rb:428:in `run_active_command'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane_core-0.43.5/lib/fastlane_core/ui/fastlane_runner.rb:26:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-4.3.5/lib/commander/delegates.rb:15:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/commands_generator.rb:175:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/commands_generator.rb:13:in `start'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/lib/fastlane/cli_tools_distributor.rb:47:in `take_off'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-1.89.0/bin/fastlane:5:in `&lt;top (required)&gt;'&#10;/usr/local/bin/fastlane:23:in `load'&#10;/usr/local/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;Could not find version in podspec content 'Pod::Spec.new do |s|&#10;  s.name         = &quot;WTSegment&quot;&#10;  s.version      = &quot;{0.3.1}&quot;&#10;  s.summary      = &quot;GUOTAIJUNAN YDPT Lib&quot;&#10;  s.description  = &quot;GJYD components...GUOTAIJUNAN YDPT Lib&quot;&#10;  s.homepage     = &quot;http://www.wutongr.com&quot;&#10;  s.license      = 'MIT'&#10;  s.author       = { &quot;wutongr&quot; =&gt; &quot;zc_and_zc@aliyun.com&quot; }&#10;  s.platform     = :ios, '7.0'&#10;  s.source       = { :git =&gt; &quot;https://github.com/wutongr/WTSegment.git&quot;, :tag =&gt; s.version }&#10;  s.requires_arc = true&#10;  s.source_files = 'WTSegment/WTSegment/{WTSegment}*.{h,m}'&#10;  s.frameworks   = 'QuartzCore'&#10;&#10;end&#10;'" />
         
       </testcase>
     

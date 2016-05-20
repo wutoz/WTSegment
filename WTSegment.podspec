@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WTSegment"
-  s.version      = "{0.3.1}"
+  s.version      = "0.3.1"
   s.summary      = "GUOTAIJUNAN YDPT Lib"
   s.description  = "GJYD components...GUOTAIJUNAN YDPT Lib"
   s.homepage     = "http://www.wutongr.com"
