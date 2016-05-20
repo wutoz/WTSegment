@@ -10,7 +10,7 @@ platform :mac do
     
   desc "Release new version"
   lane :release do |options|
-      target_version = '0.3.0'
+      target_version = options[:version]
       raise "The version is missed. Use `fastlane release version:{version_number}`.`" if target_version.nil?
       
       ensure_git_branch
