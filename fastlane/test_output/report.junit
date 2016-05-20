@@ -2,6 +2,6 @@
 <testsuites tests='2' failures='0'>
   <testsuite name='WTSegmentTests' tests='2' failures='0'>
     <testcase classname='WTSegmentTests' name='testExample' time='0.001'/>
-    <testcase classname='WTSegmentTests' name='testPerformanceExample' time='0.262'/>
+    <testcase classname='WTSegmentTests' name='testPerformanceExample' time='0.264'/>
   </testsuite>
 </testsuites>
