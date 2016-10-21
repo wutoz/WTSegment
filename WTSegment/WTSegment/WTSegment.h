@@ -113,6 +113,10 @@ typedef NS_ENUM(NSInteger,WTSegmentCursorStyle) {
  */
 @property (nonatomic, assign) CGFloat cursorHeight;
 /*!
+ *  游标左右空白
+ */
+@property (nonatomic, assign) CGFloat cursorSpace;
+/*!
  *  分割线颜色
  */
 @property (nonatomic, strong) UIColor *seperateColor;

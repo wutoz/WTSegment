@@ -36,6 +36,8 @@
     segment1.backgroundColor = [UIColor blackColor];
     segment1.cursorColor = [UIColor redColor];
     segment1.cursorStyle = WTSegmentCursorStyleBottom;
+    segment1.cursorHeight = 2;
+    segment1.cursorSpace = 5;
     segment1.itemsMax = 6;
     segment1.dataSource = self;
     segment1.delegate = self;
@@ -57,17 +59,7 @@
     }
     
     
-    UIButton *funcBtn1 = [[UIButton alloc]initWithFrame:CGRectMake(20, ScreenH - 80, 50, 50)];
-    [funcBtn1 setBackgroundColor:[UIColor redColor]];
-    funcBtn1.layer.cornerRadius = 25.0f;
-    [funcBtn1 addTarget:self action:@selector(click1:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:funcBtn1];
-    
-    UIButton *funcBtn2 = [[UIButton alloc]initWithFrame:CGRectMake(80, ScreenH - 80, 50, 50)];
-    [funcBtn2 setBackgroundColor:[UIColor blueColor]];
-    funcBtn2.layer.cornerRadius = 25.0f;
-    [funcBtn2 addTarget:self action:@selector(click2:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:funcBtn2];
+  
     // Do any additional setup after loading the view, typically from a nib.
 }
 

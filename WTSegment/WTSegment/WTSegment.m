@@ -116,6 +116,7 @@
     _itemsMax = ITEM_MAX;
     _cornerRadius = 10.0f;
     _cursorHeight = 3;
+    _cursorSpace = 0;
     _cursorStyle = WTSegmentCursorStyleBottom;
 }
 
@@ -292,14 +293,14 @@
 - (void)updateCursorOffset:(CGFloat)offset{
     switch (_cursorStyle) {
         case WTSegmentCursorStyleBottom:
-            [self.cursorView setFrame:CGRectMake(offset, FRAME_H - _cursorHeight, _itemWidth, _cursorHeight)];
+            [self.cursorView setFrame:CGRectMake(offset + _cursorSpace, FRAME_H - _cursorHeight, _itemWidth - _cursorSpace * 2, _cursorHeight)];
             break;
         case WTSegmentCursorStyleMiddle:
             self.cursorView.layer.cornerRadius = _cornerRadius;
-            [self.cursorView setFrame:CGRectMake(offset, 6, _itemWidth, FRAME_H - 6 * 2)];
+            [self.cursorView setFrame:CGRectMake(offset + _cursorSpace, 6, _itemWidth - _cursorSpace * 2, FRAME_H - 6 * 2)];
             break;
         case WTSegmentCursorStyleTop:
-            [self.cursorView setFrame:CGRectMake(offset, 0, _itemWidth, _cursorHeight)];
+            [self.cursorView setFrame:CGRectMake(offset + _cursorSpace, 0, _itemWidth - _cursorSpace * 2, _cursorHeight)];
             break;
     }
 }
