@@ -1,0 +1,8 @@
+
+*.db
+
+fastlane/README.md
+
+fastlane/report.xml
+
+WTSegment.xcodeproj/xcuserdata/wutongr.xcuserdatad/xcschemes/xcschememanagement.plist
